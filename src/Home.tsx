@@ -1,19 +1,36 @@
 import React, { SFC } from 'react'
-import { Flex, Box } from 'rebass'
 import Page from './Page'
 import PaintingHolder from './components/PaintingHolder'
+import { Flex, Box } from 'rebass'
 
 const Home: SFC = () => (
   <Page>
-    <Flex flexWrap={['wrap', 'wrap', 'nowrap']}>
-      <Box width={[1, 1, 3 / 10]} mr={[0, 0, 5]}>
+    <Flex flexWrap={['wrap', 'wrap', 'nowrap']} flexDirection="row-reverse">
+      <Box
+        width={[1, 1, 3 / 10]}
+        mt={[2, 2, 4]}
+        ml={[2, 2, 0]}
+        mr={[2, 2, 5]}
+        order={2}
+      >
+        <PaintingHolder
+          img={require('./images/Home_Miles_Ahead.jpg')}
+          title={'Miles Ahead'}
+          dims={'50 x 46cm'}
+        />
+        <PaintingHolder
+          img={require('./images/Home_Miles_Ahead.jpg')}
+          title={'Miles Ahead'}
+          dims={'50 x 46cm'}
+        />
+
         <PaintingHolder
           img={require('./images/Home_Miles_Ahead.jpg')}
           title={'Miles Ahead'}
           dims={'50 x 46cm'}
         />
       </Box>
-      <Box width={[1, 1, 7 / 10]}>
+      <Box width={[1, 1, 7 / 10]} order={1} mb={[5]}>
         <h2>
           "As a painter, Jones shows knowledge, strength, sensitivity and
           insight"

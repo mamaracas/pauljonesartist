@@ -5,7 +5,12 @@ import styled from 'styled-components'
 const StyledUl = styled('ul')`
   padding: 0;
   margin: 5px;
-  font-weight: bold;
+  text-align: center;
+  list-style-type: none;
+  li {
+    font-size: 12px;
+    text-align: center;
+  }
 `
 
 const PaintingHolder: SFC<{ img: string; title: string; dims: string }> = ({
@@ -14,7 +19,7 @@ const PaintingHolder: SFC<{ img: string; title: string; dims: string }> = ({
   dims
 }) => {
   return (
-    <Box>
+    <Box mb={[5]}>
       <img src={img} style={{ width: '100%' }} alt={title} />
       <StyledUl>
         {title}

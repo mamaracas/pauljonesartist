@@ -34,11 +34,6 @@ main {
   width: 100%;
 }
 
-h2 {
-  color: #2e363a;
-  font-weight: lighter !important;
-}
-
 h1,
 h2,
 h3,
@@ -52,54 +47,27 @@ h1 {
   font-size: 48px;
   margin: 0;
 }
-ul {
-  margin: 0;
-}
-.ArtistName {
-  float: right;
-  padding: 5px 10px;
-  color: #666666;
-  font-size: 24px;
+
+h2 {
+  color: #2e363a;
+  font-weight: lighter !important;
 }
 
-p {
-  padding: 5px;
-  margin: 0px;
-}
 h6 {
   font-weight: bold;
   font-size: 14px;
   padding: 0px 0px 0px 10px;
 }
 
-.Footer {
-  background-color: #8f8f8f;
-  text-decoration: none;
-}
-.Footer a {
-  float: right;
-  color: #ffffff;
-  font-family: Century Gothic;
-  font-size: 14px;
-  text-decoration: none;
+ul {
+  margin: 0;
 }
 
-hr {
-  border: 0px;
-  color: Black;
-  height: 1px;
-  overflow: hidden;
-}
-
-img,
-table {
-  border: 0px;
+p {
+  padding: 5px;
+  margin: 0px;
 }
 
 a {
   color: Black;
-}
-
-.quote {
-  color: #2e363a;
 }
