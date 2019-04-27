@@ -31,9 +31,9 @@ const Header: SFC = () => {
             >
               <Box alignSelf="flex-end">
                 <StyledText
-                  fontSize={[5, 6]}
+                  fontSize={[5, 5, 6]}
                   mr={[3]}
-                  mt={[5]}
+                  mt={[5, 5, 6]}
                   color="white"
                   textAlign="right"
                 >
