@@ -1,33 +1,105 @@
-.App {
-  text-align: center;
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  font-family: Century Gothic;
+  font-size: 1.1em;
+  letter-spacing: 0.1em;
+  color: #666;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+  text-align: left;
+  background-color: #000508;
+}
+html,
+body,
+#root {
+  height: 100%;
+  background-color: #2e363a;
+  font-family: Century Gothic;
+}
+header {
+  overflow: hidden;
+}
+nav {
+  background-color: #2e363a;
+}
+main {
+  background-color: #d7d7d7;
+  width: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+h2 {
+  color: #2e363a;
+  font-weight: lighter !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #2e363a;
+  font-weight: lighter !important;
+}
+h1 {
+  font-size: 48px;
+  margin: 0;
+}
+ul {
+  margin: 0;
+}
+.ArtistName {
+  float: right;
+  padding: 5px 10px;
+  color: #666666;
+  font-size: 24px;
 }
 
-.App-link {
-  color: #61dafb;
+p {
+  padding: 5px;
+  margin: 0px;
+}
+h6 {
+  font-weight: bold;
+  font-size: 14px;
+  padding: 0px 0px 0px 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Footer {
+  background-color: #8f8f8f;
+  text-decoration: none;
+}
+.Footer a {
+  float: right;
+  color: #ffffff;
+  font-family: Century Gothic;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+hr {
+  border: 0px;
+  color: Black;
+  height: 1px;
+  overflow: hidden;
+}
+
+img,
+table {
+  border: 0px;
+}
+
+a {
+  color: Black;
+}
+
+.quote {
+  color: #2e363a;
 }
