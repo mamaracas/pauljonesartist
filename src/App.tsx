@@ -8,7 +8,6 @@ import { Flex } from 'rebass'
 import Footer from './components/Footer'
 import styled from 'styled-components'
 import 'styled-components/macro'
-
 const FullHeightFlex = styled(Flex)`
   height: 100%;
 `

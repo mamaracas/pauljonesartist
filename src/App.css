@@ -16,15 +16,12 @@ body {
   text-align: left;
   background-color: #000508;
 }
-html,
-body,
 #root {
   height: 100%;
-  background-color: #2e363a;
-  font-family: Century Gothic;
 }
 header {
   overflow: hidden;
+  background-color: #f0eedb;
 }
 nav {
   background-color: #2e363a;
@@ -33,7 +30,6 @@ main {
   background-color: #d7d7d7;
   width: 100%;
 }
-
 h1,
 h2,
 h3,
