@@ -3,7 +3,8 @@ import './App.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Header from './components/Header'
 import Home from './Home'
-import About from './About'
+import Statement from './Statement'
+import Contacts from './Contacts'
 import { Flex } from 'rebass'
 import Footer from './components/Footer'
 import styled from 'styled-components'
@@ -22,7 +23,8 @@ const App: SFC = () => {
           <main>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/about" component={About} />
+              <Route path="/statement" component={Statement} />
+              <Route path="/contacts" component={Contacts} />
             </Switch>
           </main>
         </Flex>
