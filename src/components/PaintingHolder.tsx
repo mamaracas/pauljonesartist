@@ -26,11 +26,12 @@ const customStyles = {
   overlay: { zIndex: 10, backgroundColor: 'rgba(0, 0, 0, 0.7)' }
 }
 
-const PaintingHolder: SFC<{ img: string; title: string; dims: string }> = ({
-  img,
-  title,
-  dims
-}) => {
+const PaintingHolder: SFC<{
+  img: string
+  largeImg: string
+  title: string
+  dims: string
+}> = ({ img, largeImg, title, dims }) => {
   const [isOpen, setOpen] = useState(false)
   return (
     <Box mb={[5]}>
@@ -44,6 +45,7 @@ const PaintingHolder: SFC<{ img: string; title: string; dims: string }> = ({
       />
       {isOpen && (
         <Modal
+          appElement={document.body}
           isOpen={isOpen}
           onRequestClose={() => {
             setOpen(!isOpen)
@@ -52,10 +54,11 @@ const PaintingHolder: SFC<{ img: string; title: string; dims: string }> = ({
         >
           <img
             className="image"
-            src={img}
+            src={largeImg}
             onClick={() => {
               setOpen(!isOpen)
             }}
+            style={{ maxHeight: '90vh', maxWidth: '90vw', cursor: 'pointer' }}
             alt={title}
           />
         </Modal>
