@@ -69,3 +69,12 @@ p {
 a {
   color: #333;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
