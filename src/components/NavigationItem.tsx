@@ -2,12 +2,13 @@ import React, { SFC } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Route } from 'react-router-dom'
+import { Text } from 'rebass'
 
 const StyledLi = styled.li`
-  display: inline;
+  display: inline-block;
   margin-right: 5px;
+  margin-bottom: 5px;
   border-bottom: 1px solid #2e363a;
-  background-color: #2e363a;
   color: #d7d7d7;
   padding: 5px 10px 0;
   padding-bottom: 0;
@@ -20,14 +21,15 @@ const StyledLi = styled.li`
   }
 `
 const StyledSelectedLi = styled(StyledLi)`
-  color: #2e363a;
-  background-color: #d7d7d7;
   border-bottom: 1px solid #d7d7d7;
   a,
   a:visited {
-    color: #2e363a;
+    color: #d7d7d7;
     text-decoration: none;
   }
+`
+const StyledText = styled(Text)`
+  display: inline-block;
 `
 const Navigation: SFC<{ to: string }> = ({ to, children }) => {
   return (
@@ -37,12 +39,16 @@ const Navigation: SFC<{ to: string }> = ({ to, children }) => {
         <>
           {match && match.isExact && (
             <StyledSelectedLi>
-              <Link to={to}>{children}</Link>
+              <StyledText fontSize={[1, 2]}>
+                <Link to={to}>{children}</Link>
+              </StyledText>
             </StyledSelectedLi>
           )}
           {!(match && match.isExact) && (
             <StyledLi>
-              <Link to={to}>{children}</Link>
+              <StyledText fontSize={[1, 2]}>
+                <Link to={to}>{children}</Link>
+              </StyledText>
             </StyledLi>
           )}
         </>
