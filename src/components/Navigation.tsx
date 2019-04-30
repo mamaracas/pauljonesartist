@@ -6,9 +6,13 @@ const Navigation: SFC = () => {
   return (
     <nav>
       <Box pt={[3]}>
-        <ul>
+        <ul style={{ padding: '0', textAlign: 'center' }}>
           <NavigationItem to="/">Home</NavigationItem>
-          <NavigationItem to="/about">About</NavigationItem>
+          <NavigationItem to="/statement">Statement</NavigationItem>
+          <NavigationItem to="/paintings">Paintings</NavigationItem>
+          <NavigationItem to="/books">Books</NavigationItem>
+          <NavigationItem to="/exhibitions">Exhibitions</NavigationItem>
+          <NavigationItem to="/contacts">Contacts</NavigationItem>
         </ul>
       </Box>
     </nav>
