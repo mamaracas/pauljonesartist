@@ -5,6 +5,8 @@ import Header from './components/Header'
 import Home from './Home'
 import Statement from './Statement'
 import Contacts from './Contacts'
+import Exhibitions from './Exhibitions'
+import Books from './Books'
 import { Flex } from 'rebass'
 import Footer from './components/Footer'
 import styled from 'styled-components'
@@ -24,6 +26,8 @@ const App: SFC = () => {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/statement" component={Statement} />
+              <Route path="/exhibitions" component={Exhibitions} />
+              <Route path="/books" component={Books} />
               <Route path="/contacts" component={Contacts} />
             </Switch>
           </main>
