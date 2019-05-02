@@ -50,9 +50,7 @@ const Home: SFC = () => {
             "As a painter, Jones shows knowledge, strength, sensitivity and
             insight"
           </h2>
-          <p className="quote" style={{ textAlign: 'right', color: '#2E363A' }}>
-            Vivienne Light, Canterton Books
-          </p>
+          <p className="quote">Vivienne Light, Canterton Books</p>
           <br />
           <p>
             Paul Jones was a scholarship student at Bath Academy of Art, Corsham

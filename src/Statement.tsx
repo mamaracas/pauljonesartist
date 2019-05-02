@@ -7,6 +7,7 @@ const Statement: SFC = () => (
   <Page>
     <Flex flexWrap={['wrap', 'wrap', 'nowrap']} flexDirection="row">
       <Box width={[1, 1, 7 / 10]} order={1} mb={[5]}>
+        <h2>Statement</h2>
         <p>
           As a young painter I can remember one very special moment, the clear
           realisation that I had found a source of inspiration that would

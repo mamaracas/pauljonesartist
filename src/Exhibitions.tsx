@@ -2,11 +2,7 @@ import React, { SFC } from 'react'
 import Page from './Page'
 import PaintingHolder from './components/PaintingHolder'
 import { Flex, Box } from 'rebass'
-import styled from 'styled-components'
 
-const StyledLi = styled.li`
-  margin: 5px 0 40px;
-`
 const Exhibitions: SFC = () => (
   <Page>
     <Flex
@@ -71,6 +67,7 @@ const Exhibitions: SFC = () => (
               <a
                 href="https://sladersyard.wordpress.com/paul-jones-and-akiko-hirai/"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Time Lines
               </a>

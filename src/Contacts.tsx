@@ -32,6 +32,7 @@ const Contacts: SFC = () => (
       </Box>
       <Box width={[1, 1, 7 / 10]} order={1} mb={[5]}>
         <Box mb={[3]}>
+          <h2>Contacts</h2>
           <ul>
             Paul Jones
             <StyledLi>

@@ -95,3 +95,11 @@ a {
 .exhibitions ul {
   margin-bottom: 20px;
 }
+
+.quote {
+  textalign: right;
+  color: #2e363a;
+}
+.carousel .slide {
+  background: transparent !important;
+}
