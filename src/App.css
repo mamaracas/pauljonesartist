@@ -78,3 +78,20 @@ a {
     opacity: 1;
   }
 }
+
+.exhibitions ul.bold {
+  font-weight: bold;
+}
+
+.exhibitions ul.bold li {
+  font-weight: normal;
+  margin: 5px 0;
+}
+.exhibitions ul.bold li:before {
+  content: '– ';
+  text-indent: 5px;
+}
+
+.exhibitions ul {
+  margin-bottom: 20px;
+}
