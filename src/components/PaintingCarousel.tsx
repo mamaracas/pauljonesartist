@@ -1,6 +1,5 @@
 import React, { SFC, useState } from 'react'
 import { Box } from 'rebass'
-import styled from 'styled-components'
 import { Iimg } from './ImgLists'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
@@ -49,6 +48,7 @@ const PaintingCarousel: SFC<{
           showStatus={false}
           showIndicators={false}
           showThumbs={true}
+          infiniteLoop={true}
           onClickThumb={i => {
             setIndex(i)
           }}

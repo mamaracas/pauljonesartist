@@ -22,14 +22,14 @@ const Paintings: SFC<PropsType> = props => {
   return (
     <Page>
       <Flex flexWrap={['wrap', 'wrap', 'nowrap']} flexDirection="column">
-        <Box bg="#ccc" p={[3]}>
+        <Box bg="#ccc" p={[2]}>
           <Flex flexWrap={['wrap', 'wrap', 'nowrap']} flexDirection="row">
             {isSelectionScreen && (
               <Box
                 width={[1, 1, 3 / 10]}
                 mt={[2, 2, 4]}
                 ml={[2, 2, 0]}
-                mr={[2, 2, 5]}
+                mr={[2, 2, 2]}
                 order={2}
               >
                 <PaintingHolder
@@ -41,9 +41,9 @@ const Paintings: SFC<PropsType> = props => {
               </Box>
             )}
 
-            <Box width={[1, 1, 7 / 10]} order={1} mb={[5]}>
-              <h2>Select which collection you'd like to view:</h2>
-              <ul>
+            <Box width={[1, 1, 7 / 10]} order={1} mb={[5]} ml={[2]}>
+              <h2>Select a collection:</h2>
+              <ul style={{ listStyleType: 'circle' }}>
                 <li>
                   <h3>
                     <Link to="/paintings/recent">More recent paintings</Link>

@@ -239,18 +239,6 @@ export const imgs2019: Iimg[] = [
 
 export const imgsPrev: Iimg[] = [
   {
-    title: 'Where I stand',
-    img: require('../images/lrg/WhereIStand.jpg')
-  },
-  {
-    title: 'Rockstack 2',
-    img: require('../images/lrg/Rockstack2.jpg')
-  },
-  {
-    title: 'Point of View',
-    img: require('../images/lrg/PointofView.jpg')
-  },
-  {
     title: 'Rockfall',
     img: require('../images/lrg/Overview_rockfall.jpg')
   },
@@ -285,14 +273,6 @@ export const imgsPrev: Iimg[] = [
   {
     title: 'Miles Ahead',
     img: require('../images/lrg/MilesAhead.jpg')
-  },
-  {
-    title: 'Line work',
-    img: require('../images/lrg/Linework.jpg')
-  },
-  {
-    title: 'Land work',
-    img: require('../images/lrg/Landwork.jpg')
   },
   {
     title: 'Landmark 2',
@@ -333,5 +313,25 @@ export const imgsPrev: Iimg[] = [
   {
     title: 'Altered Image',
     img: require('../images/lrg/AlteredImage.jpg')
+  },
+  {
+    title: 'Where I stand',
+    img: require('../images/lrg/WhereIStand.jpg')
+  },
+  {
+    title: 'Rockstack 2',
+    img: require('../images/lrg/Rockstack2.jpg')
+  },
+  {
+    title: 'Point of View',
+    img: require('../images/lrg/PointofView.jpg')
+  },
+  {
+    title: 'Line work',
+    img: require('../images/lrg/Linework.jpg')
+  },
+  {
+    title: 'Land work',
+    img: require('../images/lrg/Landwork.jpg')
   }
 ]
