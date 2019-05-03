@@ -5,7 +5,13 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 import { useSpring, animated } from 'react-spring'
 import Modal from 'react-modal'
-
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  withRouter
+} from 'react-router-dom'
+import { RouteComponentProps } from 'react-router'
 import img1 from './images/1.jpg'
 import img2 from './images/2.jpg'
 import img3 from './images/3.jpg'
@@ -293,81 +299,103 @@ const imgs = [
   img15,
   img16
 ]
+type PathParamsType = {
+  year?: string
+}
+type PropsType = RouteComponentProps<PathParamsType>
 
-const Paintings: SFC = () => {
+const Paintings: SFC<PropsType> = props => {
   const [isOpen, setOpen] = useState(false)
   const [index, setIndex] = useState(0)
-  const props = useSpring({
+
+  const animationProps = useSpring({
     from: { opacity: 0, transform: 'translate(0,-40px)' },
     to: { opacity: 1, transform: 'translate(0,0)' },
     delay: 400,
     config: { mass: 1, tension: 230, friction: 20 }
   })
-
+  const is2019 =
+    props.match.params &&
+    props.match.params.year &&
+    props.match.params.year.indexOf('2019') > -1
+  console.log(is2019)
+  {
+    /*/  const carouselImg = is2019 ? imgs2019 : imgs*/
+  }
   return (
     <Page>
       <Flex flexWrap={['wrap', 'wrap', 'nowrap']} flexDirection="row-reverse">
         <Box width={[1]} order={1} mb={[5]}>
           <Box mb={[3]}>
+            <Link
+              to={{
+                pathname: '/paintings/2019',
+                state: { year: '2019' }
+              }}
+            >
+              2019 paintings
+            </Link>
             <h2>More recent Paintings</h2>
-            <h5>{imgs2019[index].title}</h5>
-            <h6>{imgs2019[index].dims}</h6>
+            <Box p={[3]} bg={'#ccc'} mb={[3]}>
+              <h4>{imgs2019[index].title}</h4>
+              <h5>{imgs2019[index].dims}</h5>
+            </Box>
             <Carousel
+              autoPlay={true}
               dynamicHeight={true}
               showStatus={false}
               showIndicators={false}
+              showThumbs={true}
               onClickThumb={i => {
                 setIndex(i)
               }}
               onChange={i => {
                 setIndex(i)
               }}
+              onClickItem={() => {
+                setOpen(!isOpen)
+              }}
               selectedItem={index}
             >
-              {imgs2019.map((item, i) => {
-                const currentImg = imgs2019[index].img
-                return (
-                  <div key={i}>
-                    <img
-                      src={item.img}
-                      alt="slideshow"
-                      style={{ maxHeight: '90vh', width: 'auto' }}
-                    />
-                    {isOpen && (
-                      <Modal
-                        appElement={document.body}
-                        isOpen={isOpen}
-                        onRequestClose={() => {
-                          setOpen(!isOpen)
-                        }}
-                        style={customStyles}
-                      >
-                        <animated.div style={props}>
-                          <img
-                            className="image"
-                            src={currentImg}
-                            onClick={() => {
-                              setOpen(!isOpen)
-                            }}
-                            style={{
-                              maxHeight: '90vh',
-                              maxWidth: '90vw',
-                              cursor: 'pointer'
-                            }}
-                            alt={'slideshow'}
-                          />
-                        </animated.div>
-                      </Modal>
-                    )}
-                  </div>
-                )
-              })}
+              {imgs2019.map((item, i) => (
+                <div key={i}>
+                  <img src={item.img} alt="slideshow" />
+                </div>
+              ))}
             </Carousel>
           </Box>
         </Box>
       </Flex>
+      {isOpen && (
+        <Modal
+          appElement={document.body}
+          isOpen={isOpen}
+          onRequestClose={() => {
+            setOpen(!isOpen)
+          }}
+          style={customStyles}
+        >
+          <animated.div style={animationProps}>
+            <h5>{imgs2019[index].title}</h5>
+            <h6>{imgs2019[index].dims}</h6>
+            <img
+              className="image"
+              src={imgs2019[index].img}
+              onClick={() => {
+                setOpen(!isOpen)
+              }}
+              style={{
+                maxHeight: '90vh',
+                maxWidth: '90vw',
+                cursor: 'pointer'
+              }}
+              alt={'slideshow'}
+            />
+          </animated.div>
+        </Modal>
+      )}
     </Page>
   )
 }
 
-export default Paintings
+export default withRouter(Paintings)
