@@ -56,6 +56,8 @@ const HeaderImages: SFC = () => {
         showIndicators={false}
         showThumbs={false}
         showArrows={false}
+        interval={6000}
+        transitionTime={1400}
       >
         {imgs.map((img, index) => (
           <div key={index}>
