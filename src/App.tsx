@@ -28,7 +28,7 @@ const App: SFC = () => {
               <Route exact path="/" component={Home} />
               <Route path="/statement" component={Statement} />
               <Route path="/exhibitions" component={Exhibitions} />
-              <Route path="/paintings" component={Paintings} />
+              <Route path="/paintings/:year?" component={Paintings} />
               <Route path="/books" component={Books} />
               <Route path="/contacts" component={Contacts} />
             </Switch>
