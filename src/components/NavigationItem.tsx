@@ -35,24 +35,29 @@ const Navigation: SFC<{ to: string }> = ({ to, children }) => {
   return (
     <Route
       path={to}
-      children={({ match }) => (
-        <>
-          {match && match.isExact && (
-            <StyledSelectedLi>
-              <StyledText fontSize={[1, 2]}>
-                <Link to={to}>{children}</Link>
-              </StyledText>
-            </StyledSelectedLi>
-          )}
-          {!(match && match.isExact) && (
-            <StyledLi>
-              <StyledText fontSize={[1, 2]}>
-                <Link to={to}>{children}</Link>
-              </StyledText>
-            </StyledLi>
-          )}
-        </>
-      )}
+      children={({ match, location }) => {
+        console.log(to.length)
+        return (
+          <>
+            {match &&
+              (match.isExact ||
+                (to.length > 1 && location.pathname.indexOf(to) > -1)) && (
+                <StyledSelectedLi>
+                  <StyledText fontSize={[1, 2]}>
+                    <Link to={to}>{children}</Link>
+                  </StyledText>
+                </StyledSelectedLi>
+              )}
+            {((match && !match.isExact && to.length === 1) || !match) && (
+              <StyledLi>
+                <StyledText fontSize={[1, 2]}>
+                  <Link to={to}>{children}</Link>
+                </StyledText>
+              </StyledLi>
+            )}
+          </>
+        )
+      }}
     />
   )
 }
