@@ -103,3 +103,7 @@ a {
 .carousel .slide {
   background: transparent !important;
 }
+
+.carousel .slide.selected {
+  cursor: pointer;
+}
