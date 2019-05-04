@@ -2,7 +2,6 @@ import React, { SFC, useState } from 'react'
 import { Box } from 'rebass'
 import styled from 'styled-components'
 import Modal from 'react-modal'
-import { useSpring, animated } from 'react-spring'
 
 const StyledUl = styled('ul')`
   padding: 0;
@@ -35,25 +34,28 @@ const PaintingHolder: SFC<{
   largeImg: string
   title: string
   dims?: string
-}> = ({ img, largeImg, title, dims }) => {
+  size?: string
+}> = ({ img, largeImg, title, dims, size }) => {
   const [isOpen, setOpen] = useState(false)
-  const props = useSpring({
-    from: { opacity: 0, transform: 'translate(0,-40px)' },
-    to: { opacity: 1, transform: 'translate(0,0)' },
-    delay: 400,
-    config: { mass: 1, tension: 230, friction: 20 }
-  })
-
+  const isSmall = size === 'small'
   return (
-    <Box mb={[5]}>
-      <img
-        src={img}
-        onClick={() => {
-          setOpen(!isOpen)
-        }}
-        alt={title}
-        style={{ width: '100%', cursor: 'pointer' }}
-      />
+    <Box mb={[isSmall ? 0 : 5]}>
+      <div style={{ transform: `scale(${isSmall ? '0.4' : '1'})` }}>
+        <img
+          className={'paintingHolderImage'}
+          src={img}
+          onClick={() => {
+            setOpen(!isOpen)
+          }}
+          alt={title}
+          style={{
+            width: '100%',
+            cursor: 'pointer',
+            boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.2)'
+          }}
+        />
+      </div>
+
       {isOpen && (
         <Modal
           appElement={document.body}
@@ -63,23 +65,28 @@ const PaintingHolder: SFC<{
           }}
           style={customStyles}
         >
-          <animated.div style={props}>
-            <img
-              className="image"
-              src={largeImg}
-              onClick={() => {
-                setOpen(!isOpen)
-              }}
-              style={{ maxHeight: '90vh', maxWidth: '90vw', cursor: 'pointer' }}
-              alt={title}
-            />
-          </animated.div>
+          <img
+            className="image"
+            src={largeImg}
+            onClick={() => {
+              setOpen(!isOpen)
+            }}
+            style={{
+              maxHeight: '90vh',
+              maxWidth: '90vw',
+              cursor: 'pointer',
+              boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.2)'
+            }}
+            alt={title}
+          />
         </Modal>
       )}
-      <StyledUl>
-        {title}
-        <li>{dims}</li>
-      </StyledUl>
+      {title && title.length > 1 && (
+        <StyledUl>
+          {title}
+          <li>{dims}</li>
+        </StyledUl>
+      )}
     </Box>
   )
 }

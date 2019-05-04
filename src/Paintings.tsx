@@ -1,11 +1,14 @@
-import React, { SFC } from 'react'
+import React, { SFC, useRef } from 'react'
 import Page from './Page'
-import { Flex, Box } from 'rebass'
+import { Flex, Box, BoxProps } from 'rebass'
 import PaintingCarousel from './components/PaintingCarousel'
 import { RouteComponentProps } from 'react-router'
 import { Link, withRouter } from 'react-router-dom'
 import { imgsPrev, imgs2019, Iimg, imgsApr08 } from './components/ImgLists'
 import PaintingHolder from './components/PaintingHolder'
+import styled from 'styled-components/macro'
+import PaintingCollectionHeading from './components/PaintingCollectionHeading'
+import Collapsible from 'react-collapsible'
 
 type PathParamsType = {
   collection?: string
@@ -13,7 +16,7 @@ type PathParamsType = {
 type PropsType = RouteComponentProps<PathParamsType>
 
 const selectRandomImg: (imgs: Iimg[]) => Iimg = imgs => {
-  return imgs2019[Math.floor(Math.random() * imgs.length)]
+  return imgs[Math.floor(Math.random() * imgs.length)]
 }
 
 const selectImgCollection: (collection?: string) => Iimg[] = collection => {
@@ -28,6 +31,7 @@ const selectImgCollection: (collection?: string) => Iimg[] = collection => {
 }
 
 const Paintings: SFC<PropsType> = props => {
+  const titleRef = useRef<HTMLElement | null>(null)
   const isLatestCollection =
     props.match.params &&
     props.match.params.collection &&
@@ -37,20 +41,24 @@ const Paintings: SFC<PropsType> = props => {
   const isSelectionScreen = !(
     props.match.params && props.match.params.collection
   )
-  const randomImg = selectRandomImg(imgs)
+  const randomImg = selectRandomImg(imgs2019)
+  const scrollToTitleRef = () => {
+    window.scrollTo(
+      0,
+      (titleRef &&
+        titleRef.current &&
+        titleRef.current.getBoundingClientRect().top) ||
+        0
+    )
+  }
+
   return (
     <Page>
       <Flex flexWrap={['wrap', 'wrap', 'nowrap']} flexDirection="column">
         <Box bg="#ccc" p={[2]}>
           <Flex flexWrap={['wrap', 'wrap', 'nowrap']} flexDirection="row">
             {isSelectionScreen && (
-              <Box
-                width={[1, 1, 3 / 10]}
-                mt={[2, 2, 4]}
-                ml={[2, 2, 0]}
-                mr={[2, 2, 2]}
-                order={2}
-              >
+              <Box width={[1, 1, 3 / 10]} order={2} m={[5]}>
                 <PaintingHolder
                   img={randomImg.img}
                   largeImg={randomImg.img}
@@ -60,35 +68,52 @@ const Paintings: SFC<PropsType> = props => {
               </Box>
             )}
 
-            <Box width={[1, 1, 7 / 10]} order={1} mb={[5]} ml={[2]}>
+            <Box width={[1, 1, 5 / 10]} order={1} mb={[5]} mr={[2]}>
               <h2>Select a collection:</h2>
-              <ul style={{ listStyleType: 'circle' }}>
-                <li>
-                  <h3>
-                    <Link to="/paintings/recent">More recent paintings</Link>
-                  </h3>
-                </li>
-                <li>
-                  <h3>
-                    <Link to="/paintings/other">Other paintings</Link>
-                    {!isSelectionScreen && !isLatestCollection && (
-                      <ul>
-                        <li>
-                          <h4>
-                            <Link to="/paintings/apr08">April 2008</Link>
-                          </h4>
-                        </li>
-                      </ul>
-                    )}
-                  </h3>
-                </li>
-              </ul>
+              <PaintingCollectionHeading
+                marginSpace={2}
+                item={{
+                  ...selectRandomImg(imgs2019),
+                  title: '',
+                  dims: ''
+                }}
+              >
+                <Link to="/paintings/recent" onClick={scrollToTitleRef}>
+                  Most recent
+                </Link>
+              </PaintingCollectionHeading>
+
+              <Collapsible trigger={'Other collections'} open={true}>
+                <PaintingCollectionHeading
+                  item={{
+                    ...selectRandomImg(imgsPrev),
+                    title: '',
+                    dims: ''
+                  }}
+                >
+                  <Link to="/paintings/other" onClick={scrollToTitleRef}>
+                    2013
+                  </Link>
+                </PaintingCollectionHeading>
+
+                <PaintingCollectionHeading
+                  item={{
+                    ...selectRandomImg(imgsApr08),
+                    title: '',
+                    dims: ''
+                  }}
+                >
+                  <Link to="/paintings/apr08" onClick={scrollToTitleRef}>
+                    April 2008
+                  </Link>
+                </PaintingCollectionHeading>
+              </Collapsible>
             </Box>
           </Flex>
         </Box>
 
         {!isSelectionScreen && (
-          <Box width={[1]} order={1} mb={[5]}>
+          <Box width={[1]} order={1} mb={[5]} ref={titleRef}>
             <PaintingCarousel
               pageTitle={
                 isLatestCollection ? 'More recent paintings' : 'Other paintings'
