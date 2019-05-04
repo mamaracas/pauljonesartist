@@ -1,7 +1,7 @@
 import React, { SFC } from 'react'
 import Page from './Page'
-import PaintingHolder from './components/PaintingHolder'
 import { Flex, Box } from 'rebass'
+import PaintingList from './components/PaintingList'
 
 const Home: SFC = () => {
   return (
@@ -14,7 +14,8 @@ const Home: SFC = () => {
           mr={[2, 2, 5]}
           order={2}
         >
-          <PaintingHolder
+          <PaintingList count={4} />
+          {/* <PaintingHolder
             img={require('./images/Home_Miles_Ahead.jpg')}
             largeImg={require('./images/lrg/MilesAhead.jpg')}
             title={'Miles Ahead'}
@@ -43,7 +44,7 @@ const Home: SFC = () => {
             largeImg={require('./images/lrg/Landmark2.jpg')}
             title={'Landmark 2'}
             dims={'36 x 36cm'}
-          />
+         />*/}
         </Box>
         <Box width={[1, 1, 7 / 10]} order={1} mb={[5]}>
           <h2>
