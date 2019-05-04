@@ -7,6 +7,7 @@ html {
   font-size: 1em;
   letter-spacing: 0.05em;
   color: #666;
+  scroll-behavior: smooth;
 }
 body {
   margin: 0px;
@@ -108,4 +109,10 @@ a {
 }
 .carousel.carousel-slider .control-arrow {
   background-color: rgba(0, 0, 0, 0.2) !important;
+}
+.Collapsible__trigger {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #ababab;
+  display: block;
 }
