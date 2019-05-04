@@ -4,21 +4,40 @@ import { Flex, Box } from 'rebass'
 import PaintingCarousel from './components/PaintingCarousel'
 import { RouteComponentProps } from 'react-router'
 import { Link, withRouter } from 'react-router-dom'
-import { imgsPrev, imgs2019, Iimg } from './components/ImgLists'
+import { imgsPrev, imgs2019, Iimg, imgsApr08 } from './components/ImgLists'
 import PaintingHolder from './components/PaintingHolder'
 
 type PathParamsType = {
-  year?: string
+  collection?: string
 }
 type PropsType = RouteComponentProps<PathParamsType>
 
+const selectRandomImg: (imgs: Iimg[]) => Iimg = imgs => {
+  return imgs2019[Math.floor(Math.random() * imgs.length)]
+}
+
+const selectImgCollection: (collection?: string) => Iimg[] = collection => {
+  switch (collection) {
+    case 'other':
+      return imgsPrev
+    case 'apr08':
+      return imgsApr08
+    default:
+      return imgs2019
+  }
+}
+
 const Paintings: SFC<PropsType> = props => {
-  const is2019 =
+  const isLatestCollection =
     props.match.params &&
-    props.match.params.year &&
-    props.match.params.year.indexOf('recent') > -1
-  const imgs: Iimg[] = is2019 ? imgs2019 : imgsPrev
-  const isSelectionScreen = !(props.match.params && props.match.params.year)
+    props.match.params.collection &&
+    props.match.params.collection.indexOf('recent') > -1
+  const whichCollection = props.match.params && props.match.params.collection
+  const imgs = selectImgCollection(whichCollection)
+  const isSelectionScreen = !(
+    props.match.params && props.match.params.collection
+  )
+  const randomImg = selectRandomImg(imgs)
   return (
     <Page>
       <Flex flexWrap={['wrap', 'wrap', 'nowrap']} flexDirection="column">
@@ -33,10 +52,10 @@ const Paintings: SFC<PropsType> = props => {
                 order={2}
               >
                 <PaintingHolder
-                  img={require('./images/2019/9.jpg')}
-                  largeImg={require('./images/2019/9.jpg')}
-                  title={'Beyond the line'}
-                  dims={'40 x 40cm'}
+                  img={randomImg.img}
+                  largeImg={randomImg.img}
+                  title={randomImg.title}
+                  dims={randomImg.dims}
                 />
               </Box>
             )}
@@ -52,16 +71,28 @@ const Paintings: SFC<PropsType> = props => {
                 <li>
                   <h3>
                     <Link to="/paintings/other">Other paintings</Link>
+                    {!isSelectionScreen && !isLatestCollection && (
+                      <ul>
+                        <li>
+                          <h4>
+                            <Link to="/paintings/apr08">April 2008</Link>
+                          </h4>
+                        </li>
+                      </ul>
+                    )}
                   </h3>
                 </li>
               </ul>
             </Box>
           </Flex>
         </Box>
+
         {!isSelectionScreen && (
           <Box width={[1]} order={1} mb={[5]}>
             <PaintingCarousel
-              pageTitle={is2019 ? 'More recent paintings' : 'Other paintings'}
+              pageTitle={
+                isLatestCollection ? 'More recent paintings' : 'Other paintings'
+              }
               imgs={imgs}
             />
           </Box>

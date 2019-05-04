@@ -106,3 +106,6 @@ a {
 .carousel .slide.selected {
   cursor: pointer;
 }
+.carousel.carousel-slider .control-arrow {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}

@@ -24,8 +24,8 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     animation: 'fadeIn 1s ease-in-out 1',
-    animationFillMode:'forwards',
-    opacity:0
+    animationFillMode: 'forwards',
+    opacity: 0
   },
   overlay: { zIndex: 10, backgroundColor: 'rgba(0, 0, 0, 0.7)' }
 }
@@ -34,7 +34,7 @@ const PaintingHolder: SFC<{
   img: string
   largeImg: string
   title: string
-  dims: string
+  dims?: string
 }> = ({ img, largeImg, title, dims }) => {
   const [isOpen, setOpen] = useState(false)
   const props = useSpring({

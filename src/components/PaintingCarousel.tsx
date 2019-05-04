@@ -43,12 +43,14 @@ const PaintingCarousel: SFC<{
           {imgs[index].dims && <h5>{imgs[index].dims}</h5>}
         </Box>
         <Carousel
-          autoPlay={true}
-          dynamicHeight={true}
+          autoPlay={!isOpen}
+          dynamicHeight={false}
           showStatus={false}
           showIndicators={false}
           showThumbs={true}
+          stopOnHover={true}
           infiniteLoop={true}
+          selectedItem={index}
           onClickThumb={i => {
             setIndex(i)
           }}
@@ -58,7 +60,6 @@ const PaintingCarousel: SFC<{
           onClickItem={() => {
             setOpen(!isOpen)
           }}
-          selectedItem={index}
         >
           {imgs.map((item, i) => (
             <div key={i}>
@@ -81,7 +82,7 @@ const PaintingCarousel: SFC<{
             {imgs[index].dims && <h5>{imgs[index].dims}</h5>}
             <img
               className="image"
-              src={imgs[index].img}
+              src={imgs[index].largeImg}
               onClick={() => {
                 setOpen(!isOpen)
               }}
