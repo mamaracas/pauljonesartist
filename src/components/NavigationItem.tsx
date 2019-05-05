@@ -36,7 +36,6 @@ const Navigation: SFC<{ to: string }> = ({ to, children }) => {
     <Route
       path={to}
       children={({ match, location }) => {
-        console.log(to.length)
         return (
           <>
             {match &&

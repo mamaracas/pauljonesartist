@@ -33,7 +33,7 @@ const AnimateArray: SFC<Props> = ({
       {trail.map(({ p, ...rest }, index) => {
         const item = items[index]
         if (!item) {
-          return
+          return <></>
         }
         return (
           <animated.div
