@@ -4,7 +4,14 @@ import { Flex, Box, Text } from 'rebass'
 import PaintingCarousel from './components/PaintingCarousel'
 import { RouteComponentProps } from 'react-router'
 import { Link, withRouter } from 'react-router-dom'
-import { imgsPrev, imgs2019, Iimg, imgsApr08 } from './components/ImgLists'
+import {
+  imgsPrev,
+  imgs2019,
+  Iimg,
+  imgsApr08,
+  imgsAug07,
+  imgsCranborne2013
+} from './components/ImgLists'
 import PaintingHolder from './components/PaintingHolder'
 import styled from 'styled-components/macro'
 import PaintingCollectionHeading from './components/PaintingCollectionHeading'
@@ -25,6 +32,10 @@ const selectImgCollection: (collection?: string) => Iimg[] = collection => {
       return imgsPrev
     case 'apr08':
       return imgsApr08
+    case 'aug07':
+      return imgsAug07
+    case 'cran13':
+      return imgsCranborne2013
     default:
       return imgs2019
   }
@@ -33,9 +44,13 @@ const selectImgCollection: (collection?: string) => Iimg[] = collection => {
 const getPageTitle: (collection?: string) => string = collection => {
   switch (collection) {
     case 'other':
-      return '2013 Collection'
+      return 'Other Collection'
     case 'apr08':
       return 'April 2008 Collection'
+    case 'aug07':
+      return 'August 2007 Collection'
+    case 'cran13':
+      return 'Cranborne 2013 Collection'
     default:
       return 'Most recent Collection'
   }
@@ -104,9 +119,19 @@ const Paintings: SFC<PropsType> = props => {
                   }}
                   to="/paintings/other"
                 >
-                  2013
+                  Other
                 </PaintingCollectionHeading>
 
+                <PaintingCollectionHeading
+                  item={{
+                    ...selectRandomImg(imgsCranborne2013),
+                    title: '',
+                    dims: ''
+                  }}
+                  to="/paintings/cran13"
+                >
+                  Cranborne 2013
+                </PaintingCollectionHeading>
                 <PaintingCollectionHeading
                   item={{
                     ...selectRandomImg(imgsApr08),
@@ -116,6 +141,16 @@ const Paintings: SFC<PropsType> = props => {
                   to="/paintings/apr08"
                 >
                   April 2008
+                </PaintingCollectionHeading>
+                <PaintingCollectionHeading
+                  item={{
+                    ...selectRandomImg(imgsAug07),
+                    title: '',
+                    dims: ''
+                  }}
+                  to="/paintings/aug07"
+                >
+                  August 2007
                 </PaintingCollectionHeading>
               </Collapsible>
             </Box>
