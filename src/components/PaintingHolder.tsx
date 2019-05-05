@@ -6,6 +6,7 @@ import Modal from 'react-modal'
 const StyledUl = styled('ul')`
   padding: 0;
   margin: 5px;
+  margin-top: 9px;
   text-align: center;
   list-style-type: none;
   li {
@@ -35,28 +36,32 @@ const PaintingHolder: SFC<{
   title: string
   dims?: string
   size?: string
-}> = ({ img, largeImg, title, dims, size }) => {
+  showModal?: boolean
+}> = ({ img, largeImg, title, dims, size, showModal = true }) => {
   const [isOpen, setOpen] = useState(false)
   const isSmall = size === 'small'
   return (
     <Box mb={[isSmall ? 0 : 5]}>
-      <div style={{ transform: `scale(${isSmall ? '0.4' : '1'})` }}>
+      <div
+        style={{ transform: `scale(${isSmall ? '0.4' : '1'})` }}
+        className={'paintingHolderImageHolder'}
+      >
         <img
           className={'paintingHolderImage'}
           src={img}
           onClick={() => {
-            setOpen(!isOpen)
+            if (showModal) setOpen(!isOpen)
           }}
           alt={title}
           style={{
             width: '100%',
-            cursor: 'pointer',
-            boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.2)'
+            height: '100%',
+            cursor: 'pointer'
           }}
         />
       </div>
 
-      {isOpen && (
+      {isOpen && showModal && (
         <Modal
           appElement={document.body}
           isOpen={isOpen}

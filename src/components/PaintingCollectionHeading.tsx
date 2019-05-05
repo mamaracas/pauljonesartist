@@ -1,15 +1,15 @@
 import React, { SFC } from 'react'
 import { Flex, Box } from 'rebass'
-import { Link, withRouter } from 'react-router-dom'
 import { Iimg } from './ImgLists'
 import PaintingHolder from './PaintingHolder'
 import styled from 'styled-components/macro'
+import { Link } from 'react-router-dom'
 
-const PaintingCollectionHeading: SFC<{ marginSpace?: number; item: Iimg }> = ({
-  item,
-  children,
-  marginSpace = 0
-}) => {
+const PaintingCollectionHeading: SFC<{
+  marginSpace?: number
+  item: Iimg
+  to: string
+}> = ({ item, children, marginSpace = 0, to }) => {
   return (
     <Flex
       flexDirection="row"
@@ -18,19 +18,26 @@ const PaintingCollectionHeading: SFC<{ marginSpace?: number; item: Iimg }> = ({
       px={[3]}
       my={[marginSpace]}
       alignItems="center"
-      css={{ height: '100px', borderBottom: '1px solid #999' }}
+      css={{
+        height: '100px',
+        borderBottom: '1px solid #999',
+        overflow: 'hidden'
+      }}
     >
       <Box width={[1 / 2]} flex={'1 0 0'}>
-        {children}
+        <Link to={to}>{children}</Link>
       </Box>
       <Box width={[1 / 2]} flex={'1 0 0'}>
-        <PaintingHolder
-          img={item.img}
-          largeImg={item.img}
-          title={item.title}
-          dims={item.dims}
-          size={'small'}
-        />
+        <Link to={to}>
+          <PaintingHolder
+            img={item.img}
+            largeImg={item.img}
+            title={item.title}
+            dims={item.dims}
+            size={'small'}
+            showModal={false}
+          />
+        </Link>
       </Box>
     </Flex>
   )

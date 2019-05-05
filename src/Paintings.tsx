@@ -1,6 +1,6 @@
-import React, { SFC, useRef } from 'react'
+import React, { SFC, useRef, useEffect } from 'react'
 import Page from './Page'
-import { Flex, Box, BoxProps } from 'rebass'
+import { Flex, Box, Text } from 'rebass'
 import PaintingCarousel from './components/PaintingCarousel'
 import { RouteComponentProps } from 'react-router'
 import { Link, withRouter } from 'react-router-dom'
@@ -30,18 +30,29 @@ const selectImgCollection: (collection?: string) => Iimg[] = collection => {
   }
 }
 
+const getPageTitle: (collection?: string) => string = collection => {
+  switch (collection) {
+    case 'other':
+      return '2013 Collection'
+    case 'apr08':
+      return 'April 2008 Collection'
+    default:
+      return 'Most recent Collection'
+  }
+}
+
 const Paintings: SFC<PropsType> = props => {
   const titleRef = useRef<HTMLElement | null>(null)
-  const isLatestCollection =
-    props.match.params &&
-    props.match.params.collection &&
-    props.match.params.collection.indexOf('recent') > -1
   const whichCollection = props.match.params && props.match.params.collection
+  useEffect(() => {
+    scrollToTitleRef()
+  }, [props.match.params.collection])
   const imgs = selectImgCollection(whichCollection)
   const isSelectionScreen = !(
     props.match.params && props.match.params.collection
   )
   const randomImg = selectRandomImg(imgs2019)
+  const pageTitle = getPageTitle(whichCollection)
   const scrollToTitleRef = () => {
     window.scrollTo(
       0,
@@ -51,7 +62,6 @@ const Paintings: SFC<PropsType> = props => {
         0
     )
   }
-
   return (
     <Page>
       <Flex flexWrap={['wrap', 'wrap', 'nowrap']} flexDirection="column">
@@ -59,12 +69,15 @@ const Paintings: SFC<PropsType> = props => {
           <Flex flexWrap={['wrap', 'wrap', 'nowrap']} flexDirection="row">
             {isSelectionScreen && (
               <Box width={[1, 1, 3 / 10]} order={2} m={[5]}>
-                <PaintingHolder
-                  img={randomImg.img}
-                  largeImg={randomImg.img}
-                  title={randomImg.title}
-                  dims={randomImg.dims}
-                />
+                <Link to="/paintings/recent">
+                  <PaintingHolder
+                    img={randomImg.img}
+                    largeImg={randomImg.img}
+                    title={randomImg.title}
+                    dims={randomImg.dims}
+                    showModal={false}
+                  />
+                </Link>
               </Box>
             )}
 
@@ -77,23 +90,21 @@ const Paintings: SFC<PropsType> = props => {
                   title: '',
                   dims: ''
                 }}
+                to="/paintings/recent"
               >
-                <Link to="/paintings/recent" onClick={scrollToTitleRef}>
-                  Most recent
-                </Link>
+                <Text>Most recent</Text>
               </PaintingCollectionHeading>
 
-              <Collapsible trigger={'Other collections'} open={true}>
+              <Collapsible trigger={'Other collections'} open={false}>
                 <PaintingCollectionHeading
                   item={{
                     ...selectRandomImg(imgsPrev),
                     title: '',
                     dims: ''
                   }}
+                  to="/paintings/other"
                 >
-                  <Link to="/paintings/other" onClick={scrollToTitleRef}>
-                    2013
-                  </Link>
+                  2013
                 </PaintingCollectionHeading>
 
                 <PaintingCollectionHeading
@@ -102,10 +113,9 @@ const Paintings: SFC<PropsType> = props => {
                     title: '',
                     dims: ''
                   }}
+                  to="/paintings/apr08"
                 >
-                  <Link to="/paintings/apr08" onClick={scrollToTitleRef}>
-                    April 2008
-                  </Link>
+                  April 2008
                 </PaintingCollectionHeading>
               </Collapsible>
             </Box>
@@ -114,12 +124,7 @@ const Paintings: SFC<PropsType> = props => {
 
         {!isSelectionScreen && (
           <Box width={[1]} order={1} mb={[5]} ref={titleRef}>
-            <PaintingCarousel
-              pageTitle={
-                isLatestCollection ? 'More recent paintings' : 'Other paintings'
-              }
-              imgs={imgs}
-            />
+            <PaintingCarousel pageTitle={pageTitle} imgs={imgs} />
           </Box>
         )}
       </Flex>
