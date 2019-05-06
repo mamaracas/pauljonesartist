@@ -12,7 +12,9 @@ import {
   imgsAug07,
   imgsCranborne2013,
   imgsOutOfTheBlue2013,
-  imgsStones2013
+  imgsStones2013,
+  imgsJan2011,
+  imgsEarlier
 } from './components/ImgLists'
 import PaintingHolder from './components/PaintingHolder'
 import styled from 'styled-components/macro'
@@ -43,6 +45,10 @@ const selectImgCollection: (collection?: string) => Iimg[] = collection => {
       return imgsOutOfTheBlue2013
     case 'stones13':
       return imgsStones2013
+    case 'jan11':
+      return imgsJan2011
+    case 'earlier':
+      return imgsEarlier
     default:
       return imgs2019
   }
@@ -62,6 +68,10 @@ const getPageTitle: (collection?: string) => string = collection => {
       return 'Out of the Blue 2013 Collection'
     case 'stones13':
       return 'Stones 2013 Collection'
+    case 'jan11':
+      return 'January 2011 Collection'
+    case 'earlier':
+      return 'Earlier Collection'
     default:
       return 'Most recent Collection'
   }
@@ -174,6 +184,16 @@ const Paintings: SFC<PropsType> = props => {
                 </PaintingCollectionHeading>
                 <PaintingCollectionHeading
                   item={{
+                    ...selectRandomImg(imgsJan2011),
+                    title: '',
+                    dims: ''
+                  }}
+                  to="/paintings/jan11"
+                >
+                  January 2011
+                </PaintingCollectionHeading>
+                <PaintingCollectionHeading
+                  item={{
                     ...selectRandomImg(imgsApr08),
                     title: '',
                     dims: ''
@@ -192,6 +212,16 @@ const Paintings: SFC<PropsType> = props => {
                 >
                   August 2007
                 </PaintingCollectionHeading>
+                <PaintingCollectionHeading
+                  item={{
+                    ...selectRandomImg(imgsEarlier),
+                    title: '',
+                    dims: ''
+                  }}
+                  to="/paintings/earlier"
+                >
+                  Earlier
+                </PaintingCollectionHeading>
               </Collapsible>
             </Box>
           </Flex>
@@ -201,18 +231,17 @@ const Paintings: SFC<PropsType> = props => {
             <PaintingCarousel pageTitle={pageTitle} imgs={imgs} />
           )}
         </Box>
-        <Box
-          width={[1]}
-          order={1}
-          mb={[5]}
-          p={[3]}
-          bg="#999"
-          css={{ cursor: 'pointer' }}
-          onClick={scrollToTop}
-          ref={titleRef}
-        >
+        <Box width={[1]} order={1} ref={titleRef}>
           {!isSelectionScreen && (
-            <h4 style={{ color: 'white' }}>Back to Top ^</h4>
+            <Box
+              bg="#999"
+              mb={[5]}
+              p={[3]}
+              css={{ cursor: 'pointer' }}
+              onClick={scrollToTop}
+            >
+              <h4 style={{ color: 'white' }}>Back to Top ^</h4>
+            </Box>
           )}
         </Box>
       </Flex>
