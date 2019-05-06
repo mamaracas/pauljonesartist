@@ -80,18 +80,18 @@ const getPageTitle: (collection?: string) => string = collection => {
 const Paintings: SFC<PropsType> = props => {
   const titleRef = useRef<HTMLElement | null>(null)
   const whichCollection = props.match.params && props.match.params.collection
+  const isSelectionScreen = !(
+    props.match.params && props.match.params.collection
+  )
   useEffect(() => {
     const timer = setTimeout(() => {
-      scrollToTitleRef()
+      if (!isSelectionScreen) scrollToTitleRef()
     }, 200)
     return () => {
       clearTimeout(timer)
     }
-  }, [props.match.params.collection])
+  }, [isSelectionScreen, props.match.params.collection])
   const imgs = selectImgCollection(whichCollection)
-  const isSelectionScreen = !(
-    props.match.params && props.match.params.collection
-  )
   const randomImg = selectRandomImg(imgs2019)
   const pageTitle = getPageTitle(whichCollection)
   const scrollToTitleRef = () => {
