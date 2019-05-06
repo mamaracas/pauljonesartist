@@ -39,8 +39,10 @@ const PaintingCarousel: SFC<{
       <Box mb={[3]}>
         <h2>{pageTitle}</h2>
         <Box p={[3]} bg={'#ccc'} mb={[3]}>
-          <h4>{imgs[index].title}</h4>
-          {imgs[index].dims && <h5>{imgs[index].dims}</h5>}
+          <h4>{imgs && imgs[index] && imgs[index].title}</h4>
+          {imgs && imgs[index] && imgs[index].dims && (
+            <h5>{imgs[index].dims}</h5>
+          )}
         </Box>
         <Carousel
           autoPlay={!isOpen}
@@ -70,6 +72,7 @@ const PaintingCarousel: SFC<{
       </Box>
       {isOpen && (
         <Modal
+          closeTimeoutMS={400}
           appElement={document.body}
           isOpen={isOpen}
           onRequestClose={() => {

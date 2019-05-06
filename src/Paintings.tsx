@@ -10,12 +10,15 @@ import {
   Iimg,
   imgsApr08,
   imgsAug07,
-  imgsCranborne2013
+  imgsCranborne2013,
+  imgsOutOfTheBlue2013,
+  imgsStones2013
 } from './components/ImgLists'
 import PaintingHolder from './components/PaintingHolder'
 import styled from 'styled-components/macro'
 import PaintingCollectionHeading from './components/PaintingCollectionHeading'
 import Collapsible from 'react-collapsible'
+import { delay } from 'q'
 
 type PathParamsType = {
   collection?: string
@@ -36,6 +39,10 @@ const selectImgCollection: (collection?: string) => Iimg[] = collection => {
       return imgsAug07
     case 'cran13':
       return imgsCranborne2013
+    case 'outblue13':
+      return imgsOutOfTheBlue2013
+    case 'stones13':
+      return imgsStones2013
     default:
       return imgs2019
   }
@@ -51,6 +58,10 @@ const getPageTitle: (collection?: string) => string = collection => {
       return 'August 2007 Collection'
     case 'cran13':
       return 'Cranborne 2013 Collection'
+    case 'outblue13':
+      return 'Out of the Blue 2013 Collection'
+    case 'stones13':
+      return 'Stones 2013 Collection'
     default:
       return 'Most recent Collection'
   }
@@ -60,7 +71,12 @@ const Paintings: SFC<PropsType> = props => {
   const titleRef = useRef<HTMLElement | null>(null)
   const whichCollection = props.match.params && props.match.params.collection
   useEffect(() => {
-    scrollToTitleRef()
+    const timer = setTimeout(() => {
+      scrollToTitleRef()
+    }, 200)
+    return () => {
+      clearTimeout(timer)
+    }
   }, [props.match.params.collection])
   const imgs = selectImgCollection(whichCollection)
   const isSelectionScreen = !(
@@ -76,6 +92,9 @@ const Paintings: SFC<PropsType> = props => {
         titleRef.current.getBoundingClientRect().top) ||
         0
     )
+  }
+  const scrollToTop = () => {
+    window.scrollTo(0, 0)
   }
   return (
     <Page>
@@ -96,7 +115,7 @@ const Paintings: SFC<PropsType> = props => {
               </Box>
             )}
 
-            <Box width={[1, 1, 5 / 10]} order={1} mb={[5]} mr={[2]}>
+            <Box width={[1, 1, 7 / 10]} order={1} mb={[5]} mr={[2]}>
               <h2>Select a collection:</h2>
               <PaintingCollectionHeading
                 marginSpace={2}
@@ -132,6 +151,27 @@ const Paintings: SFC<PropsType> = props => {
                 >
                   Cranborne 2013
                 </PaintingCollectionHeading>
+
+                <PaintingCollectionHeading
+                  item={{
+                    ...selectRandomImg(imgsStones2013),
+                    title: '',
+                    dims: ''
+                  }}
+                  to="/paintings/stones13"
+                >
+                  Stones 2013
+                </PaintingCollectionHeading>
+                <PaintingCollectionHeading
+                  item={{
+                    ...selectRandomImg(imgsOutOfTheBlue2013),
+                    title: '',
+                    dims: ''
+                  }}
+                  to="/paintings/outblue13"
+                >
+                  Out of the Blue 2013
+                </PaintingCollectionHeading>
                 <PaintingCollectionHeading
                   item={{
                     ...selectRandomImg(imgsApr08),
@@ -156,12 +196,25 @@ const Paintings: SFC<PropsType> = props => {
             </Box>
           </Flex>
         </Box>
-
-        {!isSelectionScreen && (
-          <Box width={[1]} order={1} mb={[5]} ref={titleRef}>
+        <Box width={[1]} order={1} mb={[5]}>
+          {!isSelectionScreen && (
             <PaintingCarousel pageTitle={pageTitle} imgs={imgs} />
-          </Box>
-        )}
+          )}
+        </Box>
+        <Box
+          width={[1]}
+          order={1}
+          mb={[5]}
+          p={[3]}
+          bg="#999"
+          css={{ cursor: 'pointer' }}
+          onClick={scrollToTop}
+          ref={titleRef}
+        >
+          {!isSelectionScreen && (
+            <h4 style={{ color: 'white' }}>Back to Top ^</h4>
+          )}
+        </Box>
       </Flex>
     </Page>
   )
