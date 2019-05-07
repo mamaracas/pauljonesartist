@@ -1,9 +1,20 @@
-import React, { SFC } from 'react'
+import React, { SFC, useEffect } from 'react'
 import Page from './Page'
 import { Flex, Box } from 'rebass'
+import { imgs2019, Iimg } from './components/ImgLists'
 import PaintingList from './components/PaintingList'
 
 const Home: SFC = () => {
+  useEffect(() => {
+    //load the latest gallery
+    imgs2019.forEach(item => {
+      const img = new Image()
+      img.onload = function() {
+        console.log('loaded', img.src)
+      }
+      img.src = item.img
+    })
+  }, [])
   return (
     <Page>
       <Flex flexWrap={['wrap', 'wrap', 'nowrap']} flexDirection="row-reverse">
