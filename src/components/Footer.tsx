@@ -14,7 +14,7 @@ const Footer: SFC = () => (
   <footer style={{ width: '100%' }}>
     <StyledBox width={'100%'} p={[2, 3]}>
       <a
-        href="mailto:pj@pauljonesartist.co.uk"
+        href="mailto:pauljonesglendaleart@hotmail.co.uk"
         target="_blank"
         rel="noopener noreferrer"
       >
