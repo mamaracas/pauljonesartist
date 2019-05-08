@@ -2,6 +2,7 @@ import React, { SFC, useState } from 'react'
 import { Box } from 'rebass'
 import styled from 'styled-components'
 import Modal from 'react-modal'
+import ZoomIn from '@material-ui/icons/ZoomIn'
 
 const StyledUl = styled('ul')`
   padding: 0;
@@ -36,14 +37,26 @@ const PaintingHolder: SFC<{
   title: string
   dims?: string
   size?: string
+  showZoom?: boolean
   showModal?: boolean
-}> = ({ img, largeImg, title, dims, size, showModal = true }) => {
+}> = ({
+  img,
+  largeImg,
+  title,
+  dims,
+  size,
+  showModal = true,
+  showZoom = true
+}) => {
   const [isOpen, setOpen] = useState(false)
   const isSmall = size === 'small'
   return (
     <Box mb={[isSmall ? 0 : 5]}>
       <div
-        style={{ transform: `scale(${isSmall ? '0.4' : '1'})` }}
+        style={{
+          transform: `scale(${isSmall ? '0.4' : '1'})`,
+          outline: '3px solid white'
+        }}
         className={'paintingHolderImageHolder'}
       >
         <img
@@ -59,6 +72,22 @@ const PaintingHolder: SFC<{
             cursor: 'pointer'
           }}
         />
+        {showZoom && (
+          <ZoomIn
+            onClick={() => {
+              if (showModal) setOpen(!isOpen)
+            }}
+            style={{
+              cursor: 'pointer',
+              position: 'absolute',
+              top: '-1px',
+              right: '-1px',
+              color: '#ccc',
+              backgroundColor: 'white',
+              padding: '5px'
+            }}
+          />
+        )}
       </div>
 
       {isOpen && showModal && (

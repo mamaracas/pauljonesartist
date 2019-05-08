@@ -120,6 +120,7 @@ const Paintings: SFC<PropsType> = props => {
                     title={randomImg.title}
                     dims={randomImg.dims}
                     showModal={false}
+                    showZoom={false}
                   />
                 </Link>
               </Box>

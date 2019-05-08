@@ -880,12 +880,6 @@ export const imgsJan2011: Iimg[] = [
     largeImg: require('../images/other/Jan2011/hiddenWire.jpg')
   },
   {
-    title: 'Extended Edge',
-    dims: '',
-    img: require('../images/other/Jan2011/extendedEdge.jpg'),
-    largeImg: require('../images/other/Jan2011/extendedEdge.jpg')
-  },
-  {
     title: 'Extended Edge 2',
     dims: '',
     img: require('../images/other/Jan2011/extendedEdge2.jpg'),

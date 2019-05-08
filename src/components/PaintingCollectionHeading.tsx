@@ -36,6 +36,7 @@ const PaintingCollectionHeading: SFC<{
             dims={item.dims}
             size={'small'}
             showModal={false}
+            showZoom={false}
           />
         </Link>
       </Box>

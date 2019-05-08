@@ -112,7 +112,8 @@ a {
 .Collapsible__trigger {
   cursor: pointer;
   padding: 10px;
-  background-color: #ababab;
+  background-color: #999;
+  color: white;
   display: block;
 }
 
