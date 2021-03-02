@@ -1,12 +1,12 @@
-import React, { SFC } from 'react'
-import Page from './Page'
-import PaintingHolder from './components/PaintingHolder'
-import { Flex, Box } from 'rebass'
+import React, { SFC } from "react";
+import Page from "./Page";
+import PaintingHolder from "./components/PaintingHolder";
+import { Flex, Box } from "rebass";
 
 const Exhibitions: SFC = () => (
   <Page>
     <Flex
-      flexWrap={['wrap', 'wrap', 'nowrap']}
+      flexWrap={["wrap", "wrap", "nowrap"]}
       flexDirection="row-reverse"
       className="exhibitions"
     >
@@ -18,40 +18,53 @@ const Exhibitions: SFC = () => (
         order={2}
       >
         <PaintingHolder
-          img={require('./images/Exhibitions_AlteredImage.jpg')}
-          largeImg={require('./images/lrg/AlteredImage.jpg')}
-          title={'Altered image'}
-          dims={'60 x 60cm'}
+          img={require("./images/Exhibitions_AlteredImage.jpg")}
+          largeImg={require("./images/lrg/AlteredImage.jpg")}
+          title={"Altered image"}
+          dims={"60 x 60cm"}
         />
         <PaintingHolder
-          img={require('./images/Exhibitions_ClearlySee.jpg')}
-          largeImg={require('./images/lrg/ClearlySee.jpg')}
-          title={'Clearly'}
-          dims={'60 x 60cm'}
+          img={require("./images/Exhibitions_ClearlySee.jpg")}
+          largeImg={require("./images/lrg/ClearlySee.jpg")}
+          title={"Clearly"}
+          dims={"60 x 60cm"}
         />
         <PaintingHolder
-          img={require('./images/Exhibitions_FieldofVision.jpg')}
-          largeImg={require('./images/lrg/FieldOfVision.jpg')}
-          title={'Field of vision'}
-          dims={'60 x 60cm'}
+          img={require("./images/Exhibitions_FieldofVision.jpg")}
+          largeImg={require("./images/lrg/FieldOfVision.jpg")}
+          title={"Field of vision"}
+          dims={"60 x 60cm"}
         />
         <PaintingHolder
-          img={require('./images/Exhibitions_Landform3.jpg')}
-          largeImg={require('./images/lrg/Landform3.jpg')}
-          title={'Landform 3'}
-          dims={'36 x 36cm'}
+          img={require("./images/Exhibitions_Landform3.jpg")}
+          largeImg={require("./images/lrg/Landform3.jpg")}
+          title={"Landform 3"}
+          dims={"36 x 36cm"}
         />
         <PaintingHolder
-          img={require('./images/Exhibitions_Landmark2.jpg')}
-          largeImg={require('./images/lrg/Landmark2.jpg')}
-          title={'Landmark 3'}
-          dims={'36 x 36cm'}
+          img={require("./images/Exhibitions_Landmark2.jpg")}
+          largeImg={require("./images/lrg/Landmark2.jpg")}
+          title={"Landmark 3"}
+          dims={"36 x 36cm"}
         />
       </Box>
       <Box width={[1, 1, 7 / 10]} order={1} mb={[5]}>
         <Box mb={[3]}>
           <h2>Selected Exhibitions</h2>
 
+          <ul className="bold">
+            2020
+            <li>
+              <a
+                href="https://sladersyard.wordpress.com/in-the-minds-eye/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                In the Mind's Eye
+              </a>
+              , Sladers Yard Gallery
+            </li>
+          </ul>
           <ul className="bold">
             2017
             <li>Bettles Gallery</li>
@@ -252,6 +265,6 @@ const Exhibitions: SFC = () => (
       </Box>
     </Flex>
   </Page>
-)
+);
 
-export default Exhibitions
+export default Exhibitions;
