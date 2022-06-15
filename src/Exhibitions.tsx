@@ -51,7 +51,11 @@ const Exhibitions: SFC = () => (
       <Box width={[1, 1, 7 / 10]} order={1} mb={[5]}>
         <Box mb={[3]}>
           <h2>Selected Exhibitions</h2>
-
+          <ul className="bold">
+            2021
+            <li>Firecroft, Guildford</li>
+            <li>Bettles Gallery</li>
+          </ul>
           <ul className="bold">
             2020
             <li>
@@ -64,6 +68,10 @@ const Exhibitions: SFC = () => (
               </a>
               , Sladers Yard Gallery
             </li>
+          </ul>
+          <ul className="bold">
+            2019
+            <li>Young Gallery, Salisbury</li>
           </ul>
           <ul className="bold">
             2017
