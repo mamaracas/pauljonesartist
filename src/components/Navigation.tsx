@@ -1,12 +1,12 @@
-import React, { SFC } from 'react'
-import { Box } from 'rebass'
-import NavigationItem from './NavigationItem'
+import React from "react";
+import { Box } from "rebass";
+import NavigationItem from "./NavigationItem";
 
-const Navigation: SFC = () => {
+const Navigation = () => {
   return (
     <nav>
       <Box pt={[3]}>
-        <ul style={{ padding: '0', textAlign: 'center' }}>
+        <ul style={{ padding: "0", textAlign: "center" }}>
           <NavigationItem to="/">Home</NavigationItem>
           <NavigationItem to="/statement">Statement</NavigationItem>
           <NavigationItem to="/paintings">Paintings</NavigationItem>
@@ -16,7 +16,7 @@ const Navigation: SFC = () => {
         </ul>
       </Box>
     </nav>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;

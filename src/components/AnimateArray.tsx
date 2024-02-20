@@ -1,17 +1,17 @@
-import React, { SFC } from 'react'
-import { useTrail, animated } from 'react-spring'
+import React from "react";
+import { useTrail, animated } from "react-spring";
 interface Props {
-  items: any[]
-  copyPropsToStyle?: string[]
-  config?: any
-  transform?: any
-  opacity?: any
-  from?: number
-  to?: number
-  delay?: number
+  items: any[];
+  copyPropsToStyle?: string[];
+  config?: any;
+  transform?: any;
+  opacity?: any;
+  from?: number;
+  to?: number;
+  delay?: number;
 }
 
-const AnimateArray: SFC<Props> = ({
+const AnimateArray = ({
   items,
   config = { mass: 5, tension: 2600, friction: 230 },
   transform = (zeroToOne: number) =>
@@ -19,21 +19,21 @@ const AnimateArray: SFC<Props> = ({
   opacity = (zeroToOne: number) => zeroToOne,
   from = 0,
   to = 1,
-  delay = 100
+  delay = 100,
 }) => {
   const trail = useTrail(items ? items.length : 0, {
     config,
     p: to,
     from: { p: from },
-    delay: delay
-  })
+    delay: delay,
+  });
 
   return (
     <>
       {trail.map(({ p, ...rest }, index) => {
-        const item = items[index]
+        const item = items[index];
         if (!item) {
-          return <></>
+          return <></>;
         }
         return (
           <animated.div
@@ -42,15 +42,15 @@ const AnimateArray: SFC<Props> = ({
               ...rest,
               ...(item.props ? item.props : {}),
               transform: p.interpolate(transform),
-              opacity: p.interpolate(opacity)
+              opacity: p.interpolate(opacity),
             }}
           >
             {item}
           </animated.div>
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
-export default AnimateArray
+export default AnimateArray;

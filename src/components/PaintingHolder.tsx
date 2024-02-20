@@ -1,10 +1,10 @@
-import React, { SFC, useState } from 'react'
-import { Box } from 'rebass'
-import styled from 'styled-components'
-import Modal from 'react-modal'
-import ZoomIn from '@material-ui/icons/ZoomIn'
+import React, { useState } from "react";
+import { Box } from "rebass";
+import styled from "styled-components";
+import Modal from "react-modal";
+import ZoomIn from "@material-ui/icons/ZoomIn";
 
-const StyledUl = styled('ul')`
+const StyledUl = styled("ul")`
   padding: 0;
   margin: 5px;
   margin-top: 9px;
@@ -14,77 +14,69 @@ const StyledUl = styled('ul')`
     font-size: 12px;
     text-align: center;
   }
-`
+`;
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    animation: 'fadeIn 1s ease-in-out 1',
-    animationFillMode: 'forwards',
-    opacity: 0
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    animation: "fadeIn 1s ease-in-out 1",
+    animationFillMode: "forwards",
+    opacity: 0,
   },
-  overlay: { zIndex: 10, backgroundColor: 'rgba(0, 0, 0, 0.7)' }
-}
+  overlay: { zIndex: 10, backgroundColor: "rgba(0, 0, 0, 0.7)" },
+};
 
-const PaintingHolder: SFC<{
-  img: string
-  largeImg: string
-  title: string
-  dims?: string
-  size?: string
-  showZoom?: boolean
-  showModal?: boolean
-}> = ({
+const PaintingHolder = ({
   img,
   largeImg,
   title,
   dims,
-  size,
+  size = "large",
   showModal = true,
-  showZoom = true
+  showZoom = true,
 }) => {
-  const [isOpen, setOpen] = useState(false)
-  const isSmall = size === 'small'
+  const [isOpen, setOpen] = useState(false);
+  const isSmall = size === "small";
   return (
     <Box mb={[isSmall ? 0 : 5]}>
       <div
         style={{
-          transform: `scale(${isSmall ? '0.4' : '1'})`,
-          outline: '3px solid white'
+          transform: `scale(${isSmall ? "0.4" : "1"})`,
+          outline: "3px solid white",
         }}
-        className={'paintingHolderImageHolder'}
+        className={"paintingHolderImageHolder"}
       >
         <img
-          className={'paintingHolderImage'}
+          className={"paintingHolderImage"}
           src={img}
           onClick={() => {
-            if (showModal) setOpen(!isOpen)
+            if (showModal) setOpen(!isOpen);
           }}
           alt={title}
           style={{
-            width: '100%',
-            height: '100%',
-            cursor: 'pointer'
+            width: "100%",
+            height: "100%",
+            cursor: "pointer",
           }}
         />
         {showZoom && (
           <ZoomIn
             onClick={() => {
-              if (showModal) setOpen(!isOpen)
+              if (showModal) setOpen(!isOpen);
             }}
             style={{
-              cursor: 'pointer',
-              position: 'absolute',
-              top: '-1px',
-              right: '-1px',
-              color: '#ccc',
-              backgroundColor: 'white',
-              padding: '5px'
+              cursor: "pointer",
+              position: "absolute",
+              top: "-1px",
+              right: "-1px",
+              color: "#ccc",
+              backgroundColor: "white",
+              padding: "5px",
             }}
           />
         )}
@@ -95,7 +87,7 @@ const PaintingHolder: SFC<{
           appElement={document.body}
           isOpen={isOpen}
           onRequestClose={() => {
-            setOpen(!isOpen)
+            setOpen(!isOpen);
           }}
           style={customStyles}
         >
@@ -103,13 +95,13 @@ const PaintingHolder: SFC<{
             className="image"
             src={largeImg}
             onClick={() => {
-              setOpen(!isOpen)
+              setOpen(!isOpen);
             }}
             style={{
-              maxHeight: '90vh',
-              maxWidth: '90vw',
-              cursor: 'pointer',
-              boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.2)'
+              maxHeight: "90vh",
+              maxWidth: "90vw",
+              cursor: "pointer",
+              boxShadow: "0px 0px 10px 1px rgba(0,0,0,0.2)",
             }}
             alt={title}
           />
@@ -122,7 +114,7 @@ const PaintingHolder: SFC<{
         </StyledUl>
       )}
     </Box>
-  )
-}
+  );
+};
 
-export default PaintingHolder
+export default PaintingHolder;

@@ -1,6 +1,6 @@
-import React, { SFC } from 'react'
-import { Box } from 'rebass'
-import styled from 'styled-components'
+import React from "react";
+import { Box } from "rebass";
+import styled from "styled-components";
 
 const StyledBox = styled(Box)`
   background-color: #8f8f8f;
@@ -9,10 +9,10 @@ const StyledBox = styled(Box)`
     color: white;
     text-decoration: none;
   }
-`
-const Footer: SFC = () => (
-  <footer style={{ width: '100%' }}>
-    <StyledBox width={'100%'} p={[2, 3]}>
+`;
+const Footer = () => (
+  <footer style={{ width: "100%" }}>
+    <StyledBox width={"100%"} p={[2, 3]}>
       <a
         href="mailto:pauljonesglendaleart@hotmail.co.uk"
         target="_blank"
@@ -22,6 +22,6 @@ const Footer: SFC = () => (
       </a>
     </StyledBox>
   </footer>
-)
+);
 
-export default Footer
+export default Footer;

@@ -1,4 +1,4 @@
-import React, { SFC } from "react";
+import React from "react";
 import Page from "./Page";
 import PaintingHolder from "./components/PaintingHolder";
 import { Flex, Box } from "rebass";
@@ -7,7 +7,7 @@ import styled from "styled-components";
 const StyledLi = styled.li`
   margin: 5px 0 40px;
 `;
-const Contacts: SFC = () => (
+const Contacts = () => (
   <Page>
     <Flex flexWrap={["wrap", "wrap", "nowrap"]} flexDirection="row-reverse">
       <Box

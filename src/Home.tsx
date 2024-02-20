@@ -1,23 +1,23 @@
-import React, { SFC, useEffect } from 'react'
-import Page from './Page'
-import { Flex, Box } from 'rebass'
-import { imgs2019, Iimg } from './components/ImgLists'
-import PaintingList from './components/PaintingList'
+import React, { useEffect } from "react";
+import Page from "./Page";
+import { Flex, Box } from "rebass";
+import { imgs2019, Iimg } from "./components/ImgLists";
+import PaintingList from "./components/PaintingList";
 
-const Home: SFC = () => {
+const Home = () => {
   useEffect(() => {
     //load the latest gallery
-    imgs2019.forEach(item => {
-      const img = new Image()
-      img.onload = function() {
-        console.log('loaded', img.src)
-      }
-      img.src = item.img
-    })
-  }, [])
+    imgs2019.forEach((item) => {
+      const img = new Image();
+      img.onload = function () {
+        console.log("loaded", img.src);
+      };
+      img.src = item.img;
+    });
+  }, []);
   return (
     <Page>
-      <Flex flexWrap={['wrap', 'wrap', 'nowrap']} flexDirection="row-reverse">
+      <Flex flexWrap={["wrap", "wrap", "nowrap"]} flexDirection="row-reverse">
         <Box
           width={[1, 1, 3 / 10]}
           mt={[2, 2, 4]}
@@ -75,13 +75,13 @@ const Home: SFC = () => {
             A career change to Graphic Design led to him relocating to Dorset
             where he had his first major exhibition in 1979. The move to Dorset
             provided his first encounter with the chalk laden downland and
-            coastline that continues to inspire much of his work.{' '}
+            coastline that continues to inspire much of his work.{" "}
             <b>
               <i>
                 'His subtle work seems to get right to the heart of the ancient
                 landscape...'
               </i>
-            </b>{' '}
+            </b>{" "}
             (Exhibition Review, Fanny Charles).
           </p>
           <p>
@@ -93,7 +93,7 @@ const Home: SFC = () => {
         </Box>
       </Flex>
     </Page>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

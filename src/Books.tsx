@@ -1,11 +1,11 @@
-import React, { SFC } from 'react'
-import Page from './Page'
-import PaintingHolder from './components/PaintingHolder'
-import { Flex, Box } from 'rebass'
+import React from "react";
+import Page from "./Page";
+import PaintingHolder from "./components/PaintingHolder";
+import { Flex, Box } from "rebass";
 
-const Contacts: SFC = () => (
+const Contacts = () => (
   <Page>
-    <Flex flexWrap={['wrap', 'wrap', 'nowrap']} flexDirection="row">
+    <Flex flexWrap={["wrap", "wrap", "nowrap"]} flexDirection="row">
       <Box width={[1, 1, 7 / 10]} order={1} mb={[5]}>
         <Box mb={[3]}>
           <h2>OVERVIEW</h2>
@@ -120,50 +120,57 @@ const Contacts: SFC = () => (
         order={2}
       >
         <PaintingHolder
-          img={require('./images/Overview_bookCover.jpg')}
-          largeImg={require('./images/lrg/Overview_bookCover.jpg')}
-          title={'OVERVIEW 2010'}
-          dims={'Book cover'}
+          img={require("./images/Overview_bookCover.jpg")}
+          largeImg={require("./images/lrg/Overview_bookCover.jpg")}
+          title={"OVERVIEW 2010"}
+          dims={"Book cover"}
+          size={"small"}
         />
         <PaintingHolder
-          img={require('./images/Overview_greencliff.jpg')}
-          largeImg={require('./images/lrg/Overview_greencliff.jpg')}
-          title={'Greencliff'}
-          dims={'60 x 60cm'}
+          img={require("./images/Overview_greencliff.jpg")}
+          largeImg={require("./images/lrg/Overview_greencliff.jpg")}
+          title={"Greencliff"}
+          dims={"60 x 60cm"}
+          size={"small"}
         />
         <PaintingHolder
-          img={require('./images/Overview_revealedLines.jpg')}
-          largeImg={require('./images/lrg/Overview_revealedLines.jpg')}
-          title={'Revealed lines'}
-          dims={'Example page'}
+          img={require("./images/Overview_revealedLines.jpg")}
+          largeImg={require("./images/lrg/Overview_revealedLines.jpg")}
+          title={"Revealed lines"}
+          dims={"Example page"}
+          size={"small"}
         />
         <PaintingHolder
-          img={require('./images/Overview_rockfall.jpg')}
-          largeImg={require('./images/lrg/Overview_rockfall.jpg')}
-          title={'Rockfall'}
-          dims={'76 x 100cm'}
+          img={require("./images/Overview_rockfall.jpg")}
+          largeImg={require("./images/lrg/Overview_rockfall.jpg")}
+          title={"Rockfall"}
+          dims={"76 x 100cm"}
+          size={"small"}
         />
         <PaintingHolder
-          img={require('./images/Overview_Beyondthesurface.jpg')}
-          largeImg={require('./images/lrg/Overview_Beyondthesurface.jpg')}
-          title={'Beyond the surface'}
-          dims={'46 x 46cm'}
+          img={require("./images/Overview_Beyondthesurface.jpg")}
+          largeImg={require("./images/lrg/Overview_Beyondthesurface.jpg")}
+          title={"Beyond the surface"}
+          dims={"46 x 46cm"}
+          size={"small"}
         />
         <PaintingHolder
-          img={require('./images/Overview_Holdthelight.jpg')}
-          largeImg={require('./images/lrg/Overview_Holdthelight.jpg')}
-          title={'Hold the light'}
-          dims={'60 x 60cm'}
+          img={require("./images/Overview_Holdthelight.jpg")}
+          largeImg={require("./images/lrg/Overview_Holdthelight.jpg")}
+          title={"Hold the light"}
+          dims={"60 x 60cm"}
+          size={"small"}
         />
         <PaintingHolder
-          img={require('./images/Overview_EnclosedLandform.jpg')}
-          largeImg={require('./images/lrg/Overview_EnclosedLandform.jpg')}
-          title={'Enclosed landform'}
-          dims={'51 x 36cm'}
+          img={require("./images/Overview_EnclosedLandform.jpg")}
+          largeImg={require("./images/lrg/Overview_EnclosedLandform.jpg")}
+          title={"Enclosed landform"}
+          dims={"51 x 36cm"}
+          size={"small"}
         />
       </Box>
     </Flex>
   </Page>
-)
+);
 
-export default Contacts
+export default Contacts;

@@ -1,9 +1,9 @@
-import React, { SFC } from "react";
+import React from "react";
 import Page from "./Page";
 import PaintingHolder from "./components/PaintingHolder";
 import { Flex, Box } from "rebass";
 
-const Exhibitions: SFC = () => (
+const Exhibitions = () => (
   <Page>
     <Flex
       flexWrap={["wrap", "wrap", "nowrap"]}

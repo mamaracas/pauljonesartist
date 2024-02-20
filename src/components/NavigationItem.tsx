@@ -1,4 +1,4 @@
-import React, { SFC } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
@@ -45,7 +45,7 @@ const StyledSelectedLi = styled.li`
 const StyledText = styled(Text)`
   display: inline-block;
 `;
-const Navigation: SFC<{ to: string }> = ({ to, children }) => {
+const Navigation = ({ to, children }) => {
   return (
     <Route
       path={to}

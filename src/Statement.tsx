@@ -1,11 +1,11 @@
-import React, { SFC } from 'react'
-import Page from './Page'
-import PaintingHolder from './components/PaintingHolder'
-import { Flex, Box } from 'rebass'
+import React from "react";
+import Page from "./Page";
+import PaintingHolder from "./components/PaintingHolder";
+import { Flex, Box } from "rebass";
 
-const Statement: SFC = () => (
+const Statement = () => (
   <Page>
-    <Flex flexWrap={['wrap', 'wrap', 'nowrap']} flexDirection="row">
+    <Flex flexWrap={["wrap", "wrap", "nowrap"]} flexDirection="row">
       <Box width={[1, 1, 7 / 10]} order={1} mb={[5]}>
         <h2>Statement</h2>
         <p>
@@ -57,27 +57,27 @@ const Statement: SFC = () => (
         order={2}
       >
         <PaintingHolder
-          img={require('./images/StatementNorthcott2.jpg')}
-          largeImg={require('./images/lrg/Northcott2.jpg')}
-          title={'Northcott 2'}
-          dims={'37 x 57cm'}
+          img={require("./images/StatementNorthcott2.jpg")}
+          largeImg={require("./images/lrg/Northcott2.jpg")}
+          title={"Northcott 2"}
+          dims={"37 x 57cm"}
         />
         <PaintingHolder
-          img={require('./images/StatementOutlook.jpg')}
-          largeImg={require('./images/lrg/Outlook.jpg')}
-          title={'Outlook'}
-          dims={'51 x 38cm'}
+          img={require("./images/StatementOutlook.jpg")}
+          largeImg={require("./images/lrg/Outlook.jpg")}
+          title={"Outlook"}
+          dims={"51 x 38cm"}
         />
 
         <PaintingHolder
-          img={require('./images/StatementLandform3.jpg')}
-          largeImg={require('./images/lrg/Landform3.jpg')}
-          title={'Landform 3'}
-          dims={'37 x 57cm'}
+          img={require("./images/StatementLandform3.jpg")}
+          largeImg={require("./images/lrg/Landform3.jpg")}
+          title={"Landform 3"}
+          dims={"37 x 57cm"}
         />
       </Box>
     </Flex>
   </Page>
-)
+);
 
-export default Statement
+export default Statement;
