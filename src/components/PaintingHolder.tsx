@@ -37,6 +37,7 @@ const PaintingHolder = ({
   title,
   dims,
   size = "large",
+  color = "#666",
   showModal = true,
   showZoom = true,
 }) => {
@@ -108,7 +109,7 @@ const PaintingHolder = ({
         </Modal>
       )}
       {title && title.length > 1 && (
-        <StyledUl>
+        <StyledUl style={{ color: color }}>
           {title}
           <li>{dims}</li>
         </StyledUl>

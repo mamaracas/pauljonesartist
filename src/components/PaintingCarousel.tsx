@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Box } from "rebass";
-import { Iimg } from "./ImgLists";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { useSpring, animated } from "react-spring";
@@ -21,8 +20,13 @@ const customStyles = {
   overlay: { zIndex: 10, backgroundColor: "rgba(0, 0, 0, 0.7)" },
 };
 
-const PaintingCarousel = ({ imgs, pageTitle }) => {
-  const [isOpen, setOpen] = useState(false);
+const PaintingCarousel = ({
+  imgs,
+  pageTitle,
+  subTitle = "",
+  autoPlay = true,
+}) => {
+  const [isOpen, setOpen] = useState(autoPlay);
   const [index, setIndex] = useState(0);
 
   const animationProps = useSpring({
@@ -35,14 +39,18 @@ const PaintingCarousel = ({ imgs, pageTitle }) => {
     <>
       <Box mb={[3]}>
         <h2>{pageTitle}</h2>
+        {subTitle && subTitle.length > 0 && <h3>{subTitle}</h3>}
         <Box p={[3]} bg={"#ccc"} mb={[3]}>
           <h4>{imgs && imgs[index] && imgs[index].title}</h4>
           {imgs && imgs[index] && imgs[index].dims && (
             <h5>{imgs[index].dims}</h5>
           )}
+          {imgs && imgs[index] && imgs[index].price && (
+            <h5>{imgs[index].price} (Use link above to reserve or purchase)</h5>
+          )}
         </Box>
         <Carousel
-          autoPlay={!isOpen}
+          autoPlay={autoPlay && !isOpen}
           dynamicHeight={false}
           showStatus={false}
           showIndicators={false}
@@ -80,6 +88,7 @@ const PaintingCarousel = ({ imgs, pageTitle }) => {
           <animated.div style={animationProps}>
             <h4>{imgs[index].title}</h4>
             {imgs[index].dims && <h5>{imgs[index].dims}</h5>}
+            {imgs[index].price && <h5>{imgs[index].price}</h5>}
             <img
               className="image"
               src={imgs[index].largeImg}

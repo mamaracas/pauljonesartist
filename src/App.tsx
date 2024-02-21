@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./Home";
 import Statement from "./Statement";
+import LandWork from "./LandWork";
 import Contacts from "./Contacts";
 import Exhibitions from "./Exhibitions";
 import Paintings from "./Paintings";
@@ -27,6 +28,7 @@ const App = () => {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/statement" component={Statement} />
+              <Route path="/land-work" component={LandWork} />
               <Route path="/exhibitions" component={Exhibitions} />
               <Route path="/paintings/:collection?" component={Paintings} />
               <Route path="/books" component={Books} />

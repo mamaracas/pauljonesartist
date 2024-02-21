@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import Page from "./Page";
-import { Flex, Box } from "rebass";
-import { imgs2019, Iimg } from "./components/ImgLists";
+import { Flex, Box, Button } from "rebass";
+import { Link } from "react-router-dom";
+import { imgs2019 } from "./components/ImgLists";
 import PaintingList from "./components/PaintingList";
+import PaintingHolder from "./components/PaintingHolder";
 
 const Home = () => {
   useEffect(() => {
@@ -18,46 +20,48 @@ const Home = () => {
   return (
     <Page>
       <Flex flexWrap={["wrap", "wrap", "nowrap"]} flexDirection="row-reverse">
+        <Box width={[1]} order={1} mb={[5]} p={4} backgroundColor={"#265845"}>
+          <Flex flexWrap={["wrap"]} flexDirection="row">
+            <Box width={[1, 1, 3 / 10]} p={3} mr={[0, 4]}>
+              <PaintingHolder
+                key={`01`}
+                img={require("./images/2024/01.jpg")}
+                largeImg={require("./images/2024/01.jpg")}
+                title={"LIGHTWATER"}
+                dims={"32x40cm"}
+                color="white"
+              />
+            </Box>
+            <Box width={[1, 1, 6 / 10]}>
+              <h1 style={{ color: "white", fontSize: "36px" }}>
+                Paul Jones: Land Work
+              </h1>
+              <h2 style={{ color: "white" }}>2024 New Exhibition</h2>
+              <h3 style={{ color: "white" }}>The Sherborne - Dorset</h3>
+              <h4 style={{ color: "white" }}>March 1st - April 6th 2024</h4>
+              <Button backgroundColor={"#BF5731"}>
+                <Link
+                  to={"/land-work"}
+                  style={{ color: "white", textDecoration: "none" }}
+                >
+                  View paintings and find out more
+                </Link>
+              </Button>
+            </Box>
+          </Flex>
+        </Box>
+      </Flex>
+      <Flex flexWrap={["wrap", "wrap", "nowrap"]} flexDirection="row-reverse">
         <Box
           width={[1, 1, 3 / 10]}
           mt={[2, 2, 4]}
           ml={[2, 2, 0]}
           mr={[2, 2, 5]}
-          order={2}
+          order={3}
         >
           <PaintingList count={4} />
-          {/* <PaintingHolder
-            img={require('./images/Home_Miles_Ahead.jpg')}
-            largeImg={require('./images/lrg/MilesAhead.jpg')}
-            title={'Miles Ahead'}
-            dims={'50 x 46cm'}
-          />
-          <PaintingHolder
-            img={require('./images/Home_FieldOfVision.jpg')}
-            largeImg={require('./images/lrg/FieldOfVision.jpg')}
-            title={'Field of Vision'}
-            dims={'60 x 60cm'}
-          />
-          <PaintingHolder
-            img={require('./images/Home_Outland.jpg')}
-            largeImg={require('./images/lrg/Outland.jpg')}
-            title={'Outland'}
-            dims={'36 x 36cm'}
-          />
-          <PaintingHolder
-            img={require('./images/Home_BeingThere.jpg')}
-            largeImg={require('./images/lrg/BeingThere.jpg')}
-            title={'Being There'}
-            dims={'36 x 36cm'}
-          />
-          <PaintingHolder
-            img={require('./images/Home_Landmark2.jpg')}
-            largeImg={require('./images/lrg/Landmark2.jpg')}
-            title={'Landmark 2'}
-            dims={'36 x 36cm'}
-         />*/}
         </Box>
-        <Box width={[1, 1, 7 / 10]} order={1} mb={[5]}>
+        <Box width={[1, 1, 7 / 10]} order={2} mb={[5]}>
           <h2>
             "As a painter, Jones shows knowledge, strength, sensitivity and
             insight"
