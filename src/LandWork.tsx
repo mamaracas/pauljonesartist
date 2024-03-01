@@ -31,29 +31,28 @@ const Home = () => {
               for the arts.
             </p>
             <p>
-              You are invited to <strong>view my paintings below</strong>,
-              details on how to reserve / purchase will be added shortly.
+              You are invited to <strong>view my paintings below</strong>, if
+              you would like to enquire further about reserving and purchasing
+              any of the paintings, please get in touch below:
             </p>
             {/* <p>
-              You are invited to <strong>view my paintings below</strong>, and
-              can be bought or reserved by following the link to the gallery
-            </p> */}
-            <p>
               If you'd like to find out more, please contact the gallery
               directly:{" "}
               <a href="mailto:hello@thesherborne.uk" style={{ color: "white" }}>
                 hello@thesherborne.uk
               </a>
-            </p>
+            </p> */}
           </Box>
           <Button backgroundColor={"#BF5731"}>
             <a
-              href={"https://thesherborne.uk/paul-jones-land-work/"}
+              href={
+                "mailto:pj@pauljonesartist.co.uk?subject=Land Work 2024&body=[Purchase enquiry via website]"
+              }
               style={{ color: "white", textDecoration: "none" }}
               target="_blank"
               rel="noreferrer"
             >
-              View Gallery website
+              Reservation / Purchase Enquiry
             </a>
           </Button>
         </Box>
