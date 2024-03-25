@@ -46,7 +46,7 @@ const Home = () => {
           <Button backgroundColor={"#BF5731"}>
             <a
               href={
-                "mailto:pj@pauljonesartist.co.uk?subject=Land Work 2024&body=[Purchase enquiry via website]"
+                "mailto:pauljonesglendaleart@hotmail.co.uk?subject=Land Work 2024&body=[Purchase enquiry via website]"
               }
               style={{ color: "white", textDecoration: "none" }}
               target="_blank"

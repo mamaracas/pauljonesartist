@@ -36,8 +36,8 @@ const Contacts = () => (
           <ul>
             Paul Jones
             <StyledLi>
-              <a href="mailto:pj@pauljonesartist.co.uk">
-                pj@pauljonesartist.co.uk
+              <a href="mailto:pauljonesglendaleart@hotmail.co.uk">
+                pauljonesglendaleart@hotmail.co.uk
               </a>
             </StyledLi>
           </ul>
