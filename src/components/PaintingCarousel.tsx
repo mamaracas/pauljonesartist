@@ -46,7 +46,12 @@ const PaintingCarousel = ({
             <h5>{imgs[index].dims}</h5>
           )}
           {imgs && imgs[index] && imgs[index].price && (
-            <h5>{imgs[index].price} (Use link above to reserve or purchase)</h5>
+            <h5>
+              {imgs[index].price}{" "}
+              {imgs[index].isSold
+                ? "(SOLD)"
+                : "(Use link above to reserve or purchase)"}
+            </h5>
           )}
         </Box>
         <Carousel

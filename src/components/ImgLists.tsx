@@ -4,6 +4,7 @@ export interface Iimg {
   img: string;
   largeImg: string;
   price?: string;
+  isSold?: boolean;
 }
 export const imgs2024: Iimg[] = [
   {
@@ -47,6 +48,7 @@ export const imgs2024: Iimg[] = [
     img: require("../images/2024/06.jpg"),
     largeImg: require("../images/2024/modal/06.jpg"),
     price: "£2600",
+    isSold: true,
   },
   {
     title: "HAMMER ROCK",
