@@ -8,13 +8,6 @@ export interface Iimg {
 }
 export const imgs2024: Iimg[] = [
   {
-    title: "LIGHTWATER",
-    dims: "32x40cms",
-    img: require("../images/2024/01.jpg"),
-    largeImg: require("../images/2024/modal/01.jpg"),
-    price: "£1800",
-  },
-  {
     title: "UNDER & OVER",
     dims: "50x40cms",
     img: require("../images/2024/02.jpg"),
@@ -48,7 +41,6 @@ export const imgs2024: Iimg[] = [
     img: require("../images/2024/06.jpg"),
     largeImg: require("../images/2024/modal/06.jpg"),
     price: "£2600",
-    isSold: true,
   },
   {
     title: "HAMMER ROCK",
@@ -217,6 +209,14 @@ export const imgs2024: Iimg[] = [
     img: require("../images/2024/30.jpg"),
     largeImg: require("../images/2024/modal/30.jpg"),
     price: "£2900",
+  },
+  {
+    title: "LIGHTWATER",
+    dims: "32x40cms",
+    img: require("../images/2024/01.jpg"),
+    largeImg: require("../images/2024/modal/01.jpg"),
+    price: "£1800",
+    isSold: true,
   },
 ];
 

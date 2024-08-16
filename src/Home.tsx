@@ -19,7 +19,7 @@ const Home = () => {
   }, []);
   return (
     <Page>
-      <Flex flexWrap={["wrap", "wrap", "nowrap"]} flexDirection="row-reverse">
+      {/* <Flex flexWrap={["wrap", "wrap", "nowrap"]} flexDirection="row-reverse">
         <Box width={[1]} order={1} mb={[5]} p={4} backgroundColor={"#265845"}>
           <Flex flexWrap={["wrap"]} flexDirection="row">
             <Box width={[1, 1, 3 / 10]} p={3} mr={[0, 4]}>
@@ -50,7 +50,7 @@ const Home = () => {
             </Box>
           </Flex>
         </Box>
-      </Flex>
+      </Flex> */}
       <Flex flexWrap={["wrap", "wrap", "nowrap"]} flexDirection="row-reverse">
         <Box
           width={[1, 1, 3 / 10]}

@@ -22,7 +22,7 @@ const customStyles = {
 
 const PaintingCarousel = ({
   imgs,
-  pageTitle,
+  pageTitle = "",
   subTitle = "",
   autoPlay = true,
 }) => {
@@ -38,7 +38,7 @@ const PaintingCarousel = ({
   return (
     <>
       <Box mb={[3]}>
-        <h2>{pageTitle}</h2>
+        {pageTitle && <h2>{pageTitle}</h2>}
         {subTitle && subTitle.length > 0 && <h3>{subTitle}</h3>}
         <Box p={[3]} bg={"#ccc"} mb={[3]}>
           <h4>{imgs && imgs[index] && imgs[index].title}</h4>
@@ -53,6 +53,9 @@ const PaintingCarousel = ({
                 : "(Use link above to reserve or purchase)"}
             </h5>
           )}
+          <h5>
+            <strong>Click on an image below to view a larger version</strong>
+          </h5>
         </Box>
         <Carousel
           autoPlay={autoPlay && !isOpen}

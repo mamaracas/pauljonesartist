@@ -52,17 +52,12 @@ const Exhibitions = () => (
         <Box mb={[3]}>
           <h2>Selected Exhibitions</h2>
           <ul className="bold">
+            2025
+            <li>Summer Exhibition, Fircroft Gallery, Guildford</li>
+          </ul>
+          <ul className="bold">
             2024
-            <li>
-              <a
-                href="https://thesherborne.uk/paul-jones-land-work/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Land Work - The Sherborne, Dorset
-              </a>
-              - Inaugural Exhibition 2024
-            </li>
+            <li>Solo Inaugural Exhibition at The Sherborne, Dorset</li>
           </ul>
           <ul className="bold">
             2021
